@@ -24,20 +24,44 @@ function makeRedSquare() {
     red.style.backgroundColor = 'red'
     container.appendChild(red)
 }
-//loop for 8 rows
-for (let i = 0; i < 8; i++){
-//loop 8 tiles in each row
-    for(let j = 0; j < 8; j++){
-        //place correct colors with if statement
-        if(j%2 !== 0 && i%2 !== 0 || i%2 === 0 && j%2 === 0){
-            makeBlackSquare()
-        }
-        else {
-            makeRedSquare()
-        }
-    
+
+//make random color tile
+function getRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
     }
+    var tile = document.createElement('div')
+    tile.style.height = '12.5%'
+    tile.style.width = '12.5%'
+    tile.style.backgroundColor = color
+    container.appendChild(tile)
+
 }
+
+//loop through all tiles
+for(let i = 0; i < 64; i++)
+{
+    getRandomColor();
+}
+
+// //loop for 8 rows
+// for (let i = 0; i < 8; i++){
+// //loop 8 tiles in each row
+//     for(let j = 0; j < 8; j++){
+//         //place correct colors with if statement
+//         if(j%2 !== 0 && i%2 !== 0 || i%2 === 0 && j%2 === 0){
+//             makeBlackSquare()
+//         }
+//         else {
+//             makeRedSquare()
+//         }
+    
+//     }
+// }
+
+
 //append to document!!
 document.body.appendChild(container);
 
